@@ -12,16 +12,35 @@ Abstract: *We aim to address sparse-view reconstruction of a 3D scene by leverag
 
 
 ## Rendering Results
-https://github.com/hanyangyu1021/lm-gaussian.github.io/tree/main/static/videos/barn3.mp4
+<p align="center">
+    <video controls>
+        <source src="assets/barn3.mp4" type="video/mp4">
+    </video>
+</p>
 
-https://github.com/hanyangyu1021/lm-gaussian.github.io/tree/main/static/videos/horse3.mp4
+<p align="center">
+    <video controls>
+        <source src="assets/horse3.mp4" type="video/mp4">
+    </video>
+</p>
 
-https://github.com/hanyangyu1021/lm-gaussian.github.io/tree/main/static/videos/family3.mp4
+<p align="center">
+    <video controls>
+        <source src="assets/family3.mp4" type="video/mp4">
+    </video>
+</p>
 
-https://github.com/hanyangyu1021/lm-gaussian.github.io/tree/main/static/videos/garden3.mp4
+<p align="center">
+    <video controls>
+        <source src="assets/garden3.mp4" type="video/mp4">
+    </video>
+</p>
 
-https://github.com/hanyangyu1021/lm-gaussian.github.io/tree/main/static/videos/trunk3.mp4
-
+<p align="center">
+    <video controls>
+        <source src="assets/trunk3.mp4" type="video/mp4">
+    </video>
+</p>
 
 
 
