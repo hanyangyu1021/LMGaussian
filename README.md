@@ -79,6 +79,9 @@ Here we provide a simple example of horse scene in TNT. You can find the data in
 <p>To set up the model, download the following checkpoints to the <code>./models</code> folder:</p>  
     <ul>
         <li>
+            <a href="https://huggingface.co/runwayml/stable-diffusion-v1-5/tree/main">v1-5-pruned.ckpt</a>
+        </li>
+        <li>
             <a href="https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.pth">control_v11f1e_sd15_tile.pth</a>
         </li>
         <li>
