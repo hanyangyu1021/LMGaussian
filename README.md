@@ -79,10 +79,10 @@ Here we provide a simple example of horse scene in TNT. You can find the data in
 <p>To set up the model, download the following checkpoints to the <code>./models</code> folder:</p>  
     <ul>
         <li>
-            <a href="https://huggingface.co/lllyasviel/ControlNet-v1-1/tree/main/control_v11f1e_sd15_tile.pth">control_v11f1e_sd15_tile.pth</a>
+            <a href="https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.pth">control_v11f1e_sd15_tile.pth</a>
         </li>
         <li>
-            <a href="https://huggingface.co/prs-eth/marigold-normals-lcm-v0-1">control_v11f1e_sd15_tile.yaml</a>
+            <a href="https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.yaml">control_v11f1e_sd15_tile.yaml</a>
         </li>
     </ul>
 
@@ -134,4 +134,3 @@ If you find our work useful in your research, please consider giving a star :sta
       url={https://arxiv.org/abs/2409.03456}, 
 }
 ```
-
