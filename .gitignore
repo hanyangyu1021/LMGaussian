@@ -35,3 +35,4 @@ gsrepair*
 pytorch3d/
 SIBR*
 lora*
+train_repairmodel2.py

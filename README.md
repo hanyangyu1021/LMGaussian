@@ -16,7 +16,7 @@ Our method takes unposed sparse images as inputs. For example, we select 8 image
     <img src="assets/overall.png">
 </p>
 
-<h2>TODO List</h2>     <ul>         <li>             <input type="checkbox" id="task1">             <label for="task1">Support 2D-GS</label>         </li>         <li>             <input type="checkbox" id="task2">             <label for="task2">Support Scaffold-gs</label>        </li>      <li>             <input type="checkbox" id="task3">             <label for="task3">Add Increamental Test pose alignment module</label>         </li>     </ul>
+<h2>TODO List</h2>     <ul>         <li>             <input type="checkbox" id="task1">             <label for="task1">Support 2D-GS</label>         </li>         <li>             <input type="checkbox" id="task2">             <label for="task2">Support Scaffold-gs</label>        </li>      <li>             <input type="checkbox" id="task3">             <label for="task3">Add Increamental Test pose alignment module</label>         </li>   <li>         <input type="checkbox" id="task3">             <label for="task4">Support controlnet-tile-sdxl-1.0</label>         </li>  </ul>
 
 ## 🚀 Setup
 
