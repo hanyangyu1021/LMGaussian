@@ -32,7 +32,10 @@ LM-Gaussian is tested with CUDA 11.8.
         <pre><code>git clone https://github.com/hanyangyu1021/LMGaussian.git --recursive</code></pre>
     </li>
     <li>
-        <strong>Create the environment.</strong>
+        <strong>Create the environment:</strong>
+       LM-Gaussian is tested on Python 3.10.12. Requirements are listed in requirements.txt. You can install them with<br>
+        <pre><code>#  install pytorch<br>pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118<br> 
+# set up pip install packages<br>pip install -r requirements.txt</code></pre>
     </li>
 </ol>
 
@@ -137,3 +140,4 @@ If you find our work useful in your research, please consider giving a star :sta
       url={https://arxiv.org/abs/2409.03456}, 
 }
 ```
+

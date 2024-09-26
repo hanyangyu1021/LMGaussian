@@ -145,7 +145,7 @@ def training(dataset, save_dir, opt, pipe, testing_iterations, saving_iterations
         rgb_filename_list = [
             f for f in rgb_filename_list if os.path.splitext(f)[1].lower() in EXTENSION_LIST
         ]
-        rgb_filename_list = sorted(rgb_filename_list, key=extract_number)
+        rgb_filename_list = sorted(rgb_filename_list, key=lambda x: int(x.split('image')[1].split('.png')[0]))
         if W >= 1600:
             trans = transforms.Resize([H, W], antialias=True)
         with torch.no_grad():
