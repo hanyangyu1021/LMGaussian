@@ -231,7 +231,7 @@ def training(dataset, save_dir, opt, pipe, testing_iterations, saving_iterations
 
         
         # cache the rendered images in the rendering progress for diffusion lora use.
-        if iteration < 2000:
+        if iteration < 1000:
             torchvision.utils.save_image(rendered_image, os.path.join(save_dir, f'sample_{iteration}.png'))
 
         loss = 0 
