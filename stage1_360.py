@@ -109,7 +109,8 @@ def training(dataset, save_dir, opt, pipe, testing_iterations, saving_iterations
         radius = 0.01,
         points_per_pixel = 20
     )
-
+    if W1 >= 1600:
+        trans = transforms.Resize([H, W], antialias=True)
     for num in range(len(virtual_cameras_R)):
         R=virtual_cameras_R[num].astype(np.float32)
         T=virtual_cameras_t[num].astype(np.float32)
@@ -129,36 +130,39 @@ def training(dataset, save_dir, opt, pipe, testing_iterations, saving_iterations
         images = renderer(point_cloud)
         image = images[0, ..., :3].cpu().numpy()
         image_normalized = np.fliplr(np.flipud(image / np.max(image)))
-        point_render_maps.append(image_normalized.copy())
-        image = Image.fromarray((image_normalized * 255).astype(np.uint8))
         if visualize:
+            image = Image.fromarray((image_normalized * 255).astype(np.uint8))
             image.save(point_dir + '/image' + str(num) + ".png")
-
-        
-        
-        # -------------------when use cache imgs , use this code---------------------------------
-        point_render_maps = []
-        EXTENSION_LIST = [".jpg", ".jpeg", ".png"]
-        point_rgb_path = point_dir 
-
-        rgb_filename_list = glob(os.path.join(point_rgb_path, "*"))
-        rgb_filename_list = [
-            f for f in rgb_filename_list if os.path.splitext(f)[1].lower() in EXTENSION_LIST
-        ]
-        rgb_filename_list = sorted(rgb_filename_list, key=lambda x: int(x.split('image')[1].split('.png')[0]))
+        image_save = torch.tensor(image_normalized.copy()).permute(2,0,1)
         if W >= 1600:
-            trans = transforms.Resize([H, W], antialias=True)
-        with torch.no_grad():
-            for rgb_path in rgb_filename_list:
-                input_image = Image.open(rgb_path)
-                to_tensor = transforms.ToTensor()
+                image_save = trans(image_save)
+        point_render_maps.append(image_save.permute(1,2,0).to(dataset.data_device))
 
-                input_image = to_tensor(input_image)
-                input_image = input_image
-                if W >= 1600:
-                    input_image = trans(input_image)
-                point_render_maps.append(input_image.permute(1,2,0).to(dataset.data_device) )
-        #-------------------when use cache imgs , use this code---------------------------------
+        
+        
+    # # -------------------when use cache imgs , use this code---------------------------------
+    # point_render_maps = []
+    # EXTENSION_LIST = [".jpg", ".jpeg", ".png"]
+    # point_rgb_path = point_dir 
+
+    # rgb_filename_list = glob(os.path.join(point_rgb_path, "*"))
+    # rgb_filename_list = [
+    #     f for f in rgb_filename_list if os.path.splitext(f)[1].lower() in EXTENSION_LIST
+    # ]
+    # rgb_filename_list = sorted(rgb_filename_list, key=lambda x: int(x.split('image')[1].split('.png')[0]))
+    # if W >= 1600:
+    #     trans = transforms.Resize([H, W], antialias=True)
+    # with torch.no_grad():
+    #     for rgb_path in rgb_filename_list:
+    #         input_image = Image.open(rgb_path)
+    #         to_tensor = transforms.ToTensor()
+
+    #         input_image = to_tensor(input_image)
+    #         input_image = input_image
+    #         if W >= 1600:
+    #             input_image = trans(input_image)
+    #         point_render_maps.append(input_image.permute(1,2,0).to(dataset.data_device) )
+    # #-------------------when use cache imgs , use this code---------------------------------
     
 
     gaussians.training_setup(opt)
@@ -249,7 +253,7 @@ def training(dataset, save_dir, opt, pipe, testing_iterations, saving_iterations
 
         point_image = point_render_maps[random_pose]
         L_pr = lpr_loss(image, point_image, device=dataset.data_device)
-        loss += L_pr * 0.3
+        loss += L_pr * 0.6
         if tb_writer is not None:
                 tb_writer.add_scalar('loss/point_render_loss', L_pr, iteration)
                     
